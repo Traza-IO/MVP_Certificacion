@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "MVP_Certi_backend": {
+      "main": "src/MVP_Certi_backend/main.mo",
+      "type": "motoko"
+    },
+    "MVP_Certi_frontend": {
+      "dependencies": [
+        "MVP_Certi_backend"
+      ],
+      "source": [
+        "src/MVP_Certi_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "MVP_Certi_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
