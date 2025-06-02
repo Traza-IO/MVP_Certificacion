@@ -9,16 +9,8 @@ export const useSendData = () => {
     console.log('initializing createUnitData');
     setLoading(true);
     setError(null);
-    try {
-      console.log('unitData trying to send');
-      await MVP_Certi_backend.createUnitData(unitData);
+    await MVP_Certi_backend.createUnitData(unitData);
 
-    } catch (err) {
-      setError("Error al crear el permiso.");
-    } finally {
-      console.log('finally');
-      setLoading(false);
-    }
   };
 
 
