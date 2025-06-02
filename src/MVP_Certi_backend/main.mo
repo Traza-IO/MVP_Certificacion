@@ -13,19 +13,19 @@ actor class Product() {
 
   // ---------- log DPP ----------
 
-  private stable var traceabilityDPP : Trie.Trie<Text, Types.TraceabilityConsolidate> = Trie.empty();
+  private stable var traceabilityDPP : Trie.Trie<Text, Types.traceability_consolidate> = Trie.empty();
 
-  public func createModel(model : Types.TraceabilityConsolidate) : async Text {
+  public func createUnitData(unit : Types.traceability_consolidate) : async Text {
     traceabilityDPP := Trie.replace(
       traceabilityDPP,
-      key(model.idModel),
+      key(unit.gtin_product),
       Text.equal,
-      ?model
+      ?unit
     ).0;
-    return model.idModel;
+    return  unit.gtin_product;
   };
 
-  public query func readModelById(gtinProduct : Text) : async ?Types.TraceabilityConsolidate {
+  public query func readModelById(gtinProduct : Text) : async ?Types.traceability_consolidate {
     Trie.find(traceabilityDPP, key(gtinProduct), Text.equal)
   };
 
