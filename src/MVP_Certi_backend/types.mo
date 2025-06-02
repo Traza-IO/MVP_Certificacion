@@ -188,4 +188,139 @@ module {
     creationDate : Timestamp;
     updateDate : Timestamp;
   };
+
+
+  public type TraceabilityConsolidate = {
+    idModel: Text;
+    idModelExport: Text;
+    summaryMaterials: Text;
+    nameModel:Text;
+    brandInformation: [Text];
+    descriptionHeader: Text;
+    descriptionModel: {
+      name: Text;
+      collection: Text;
+      summary: Text;
+    };
+    materials:{
+      composition: Text;
+      recycling: Text;
+      percentageRecycling: Text;
+      recyclingIncome: Text;
+    };
+    packing:{
+      packType: Text;
+      weight: Text;
+      volume: Text;
+      recycling: Text;
+      percentageRecycling: Text;
+    };
+    care:{
+      care:[Text];
+      description: Text;
+    };
+    idLot: Text;
+    lotNumberProduct: Text;
+    traceSupplier:[
+      {
+        title: Text;
+        ruc: Text;
+        location: Text;
+        coords: Text;
+      }
+    ];
+    traceabilityBatch:{
+      location: Text;
+      timeLine:[{
+        process: Text;
+        startTime: Text;
+        endTime: Text;
+        owner: Text;
+      }]
+    };
+    complianceSupplier:[
+      {
+      supplier: Text;
+      certifications:[
+        {
+          name: Text;
+          organization: Text;
+          number: Text;
+          auditDate: Text;
+          effectiveDate: Text;
+          link: Text;
+          logo: Text;
+        }
+      ]
+    }];
+    complianceProcess:[
+      {
+        process: Text;
+        certifications:[{
+          name: Text;
+          organization: Text;
+          number: Text;
+          auditDate: Text;
+          effectiveDate: Text;
+          link: Text;
+          logo: Text;
+          }
+        ]
+      }
+    ];
+    traceabilityBlockchainLot: {
+      timeLine:[{
+        process: Text;
+        labelStart: Text;
+        hashStart:  Text;
+        labelEnd: Text;
+        hashEnd: Text;
+      }]
+    };
+    gtinProduct: Text;
+    idProductParentCompany: Text;
+    idProductSystemEU : Text;
+    photoProduct: {
+      frontal: Text;
+      left: Text;
+      later: Text;
+      right: Text;
+    };
+    informationProduct:{
+      name: Text;
+      brand: Text;
+      gtin: Text;
+      productCode: Text;
+      productCodeEU: Text;
+      category: Text;
+      size: Text;
+      color: Text;
+      year: Text;
+      season: Text;
+    };
+    traceabilityProduct:{
+      timeLine: [
+        {
+          process:Text;
+          startTime :Text;
+          endTime :Text;
+          owner :Text;
+        }
+      ];
+      fullName: Text;
+      companyName : Text;
+      ruc: Text;
+    };
+    traceabilityBlockchainProduct:{
+      timeLine:[
+        {
+          process: Text;
+          labelStart: Text;
+          hashStart: Text;
+          labelEnd: Text;
+          hashEnd: Text;
+        }
+      ]
+    }
+  };
 };
