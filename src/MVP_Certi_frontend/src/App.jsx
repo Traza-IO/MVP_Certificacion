@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MVP_Certi_backend } from 'declarations/MVP_Certi_backend';
-
+import { CsvUploader } from './components';
 function App() {
   const [greeting, setGreeting] = useState('');
 
@@ -19,11 +19,12 @@ function App() {
       <br />
       <br />
       <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
+        <label htmlFor="name">Enter your name:  demo demo demo</label>
         <input id="name" alt="Name" type="text" />
         <button type="submit">Click Me!</button>
       </form>
       <section id="greeting">{greeting}</section>
+      <CsvUploader />
     </main>
   );
 }
