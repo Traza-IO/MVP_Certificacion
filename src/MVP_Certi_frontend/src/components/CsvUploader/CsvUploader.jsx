@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import Papa, { ParseResult } from 'papaparse';
-
-// Define el tipo de cada fila del CSV
-
+import Papa from 'papaparse';
 
 function CsvUploader() {
   const [csvData, setCsvData] = useState([]);
@@ -11,13 +8,49 @@ function CsvUploader() {
     const file = event.target.files?.[0];
 
     if (file) {
-      Papa.parse<CsvRow>(file, {
+      Papa.parse(file, {
         header: true,
         skipEmptyLines: true,
-        dynamicTyping: false, // si quieres convertir automáticamente a number pon true
         complete: function (results) {
-          console.log('Resultados:', results.data);
-          setCsvData(results.data);
+          console.log('Raw CSV Data:', results.data);
+
+          // Campos que quieres parsear como JSON:
+          const fieldsToParse = [
+            'description_model',
+            'materials',
+            'packing',
+            'care',
+            'tips',
+            'trace_supplier',
+            'traceability_batch',
+            'compliance_supplier',
+            'compliance_process',
+            'traceability_blockchain_lot',
+            'photo_product',
+            'information_product',
+            'traceability_product',
+            'traceability_blockchain_product',
+          ];
+
+          // Transformar cada fila
+          const transformedData = results.data.map((row) => {
+            const newRow = { ...row };
+
+            fieldsToParse.forEach((field) => {
+              if (newRow[field]) {
+                try {
+                  newRow[field] = JSON.parse(newRow[field]);
+                } catch (error) {
+                  console.warn(`No se pudo parsear el campo ${field}`, error);
+                }
+              }
+            });
+
+            return newRow;
+          });
+
+          console.log('Transformed Data:', transformedData);
+          setCsvData(transformedData);
         },
         error: function (error) {
           console.error('Error al parsear CSV:', error);
