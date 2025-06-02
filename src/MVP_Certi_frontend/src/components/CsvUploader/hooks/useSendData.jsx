@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { MVP_Certi_backend } from 'declarations/MVP_Certi_backend';
+import { MVP_Certi_backend } from '../../../../../declarations/MVP_Certi_backend';
 
 export const useSendData = () => {
-  // const [permissions, setPermissions] = useState<AdmPermissions_Type[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
