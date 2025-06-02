@@ -200,7 +200,7 @@ module {
       facebook: Text;
       instagram: Text;
       whatsapp: Text;
-      eccomerce: Text;
+      ecommerce: Text;
     };
     description_header: Text;
     description_model: {
@@ -259,21 +259,19 @@ module {
         }
       ]
     }];
-    compliance_process:[
-      {
-        process: Text;
-        certifications:[{
-          name: Text;
-          organization: Text;
-          number: Text;
-          audit_date: Text;
-          effective_date: Text;
-          link: Text;
-          logo: Text;
-          }
-        ]
-      }
-    ];
+    compliance_process:{
+      process: Text;
+      certifications:[{
+        name: Text;
+        organization: Text;
+        number: Text;
+        audit_date: Text;
+        effective_date: Text;
+        link: Text;
+        logo: Text;
+        }
+      ]
+    };
     traceability_blockchain_lot: {
       time_line:[{
         process: Text;

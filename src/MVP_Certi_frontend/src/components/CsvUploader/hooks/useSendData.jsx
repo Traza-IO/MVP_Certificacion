@@ -6,13 +6,15 @@ export const useSendData = () => {
   const [error, setError] = useState(null);
 
   const createUnitData = async (unitData) => {
-    console.log(unitData)
+    console.log(unitData[0])
     console.log('initializing createUnitData');
+    // desctructure unitData
+    const { brand_information, materials, packing, care, tips, trace_supplier, traceability_batch, compliance_supplier, compliance_process, traceability_blockchain_lot, photo_product, information_product, traceability_product, traceability_blockchain_product } = unitData;
     setLoading(true);
     setError(null);
     //try {
     console.log('unitData trying to send');
-    await MVP_Certi_backend.createUnitData(unitData);
+    await MVP_Certi_backend.createUnitData(unitData[0]);
 
     //} catch (err) {
     //  console.log(err);
