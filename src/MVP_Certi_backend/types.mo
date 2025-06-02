@@ -252,6 +252,75 @@ module {
           logo: Text;
         }
       ]
-    }]
-  }
+    }];
+    complianceProcess:[
+      {
+        process: Text;
+        certifications:[{
+          name: Text;
+          organization: Text;
+          number: Text;
+          auditDate: Text;
+          effectiveDate: Text;
+          link: Text;
+          logo: Text;
+          }
+        ]
+      }
+    ];
+    traceabilityBlockchainLot: {
+      timeLine:[{
+        process: Text;
+        labelStart: Text;
+        hashStart:  Text;
+        labelEnd: Text;
+        hashEnd: Text;
+      }]
+    };
+    gtinProduct: Text;
+    idProductParentCompany: Text;
+    idProductSystemEU : Text;
+    photoProduct: {
+      frontal: Text;
+      left: Text;
+      later: Text;
+      right: Text;
+    };
+    informationProduct:{
+      name: Text;
+      brand: Text;
+      gtin: Text;
+      productCode: Text;
+      productCodeEU: Text;
+      category: Text;
+      size: Text;
+      color: Text;
+      year: Text;
+      season: Text;
+    };
+    traceabilityProduct:{
+      timeLine: [
+        {
+          process:Text;
+          startTime :Text;
+          endTime :Text;
+          owner :Text;
+        }
+      ];
+      fullName: Text;
+      companyName : Text;
+      ruc: Text;
+    };
+    traceabilityBlockchainProduct:{
+      timeLine:[
+        {
+          process: Text;
+          labelStart: Text;
+          hashStart: Text;
+          labelEnd: Text;
+          hashEnd: Text;
+        }
+      ]
+    }
+  };
 };
