@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Papa from 'papaparse';
-
+import { useSendData } from './hooks/useSendData';
 function CsvUploader() {
   const [csvData, setCsvData] = useState([]);
-
+  const { createUnitData } = useSendData();
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
 
@@ -17,6 +17,7 @@ function CsvUploader() {
           // Campos que quieres parsear como JSON:
           const fieldsToParse = [
             'description_model',
+            'brand_information',
             'materials',
             'packing',
             'care',
@@ -51,6 +52,7 @@ function CsvUploader() {
 
           console.log('Transformed Data:', transformedData);
           setCsvData(transformedData);
+          createUnitData(transformedData);
         },
         error: function (error) {
           console.error('Error al parsear CSV:', error);
