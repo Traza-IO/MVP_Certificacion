@@ -21,7 +21,7 @@ export const useSendData = () => {
       //   creationDate: permission.creationDate
       // }));
       // setPermissions(formattedData);
-    } catch (err: any) {
+    } catch (err) {
       setError("Error al cargar los permisos.");
     } finally {
       setLoading(false);

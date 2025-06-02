@@ -2,16 +2,12 @@ import { useState } from 'react';
 import Papa, { ParseResult } from 'papaparse';
 
 // Define el tipo de cada fila del CSV
-type CsvRow = {
-  name: string;
-  email: string;
-  age: string; // o number, si usas dynamicTyping
-};
+
 
 function CsvUploader() {
-  const [csvData, setCsvData] = useState<CsvRow[]>([]);
+  const [csvData, setCsvData] = useState([]);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event) => {
     const file = event.target.files?.[0];
 
     if (file) {
@@ -19,11 +15,11 @@ function CsvUploader() {
         header: true,
         skipEmptyLines: true,
         dynamicTyping: false, // si quieres convertir automáticamente a number pon true
-        complete: function (results: ParseResult<CsvRow>) {
+        complete: function (results) {
           console.log('Resultados:', results.data);
           setCsvData(results.data);
         },
-        error: function (error: Error) {
+        error: function (error) {
           console.error('Error al parsear CSV:', error);
         }
       });
