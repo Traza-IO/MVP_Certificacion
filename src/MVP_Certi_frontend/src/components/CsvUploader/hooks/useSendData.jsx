@@ -1,26 +1,24 @@
 import { useState } from "react";
-import { MVP_Certi_backend } from '../../../../../declarations/MVP_Certi_backend';
+import { MVP_Certi_backend } from 'declarations/MVP_Certi_backend';
 
 export const useSendData = () => {
+  // const [permissions, setPermissions] = useState<AdmPermissions_Type[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const createUnitData = async (unitData) => {
-    console.log(unitData)
     console.log('initializing createUnitData');
     setLoading(true);
     setError(null);
-    //try {
+    try {
       console.log('unitData trying to send');
       await MVP_Certi_backend.createUnitData(unitData);
-
-    //} catch (err) {
-    //  console.log(err);
-    //  setError("Error al crear el permiso.");
-    //} finally {
-    //  console.log('finally');
-    //  setLoading(false);
-    // }
+    } catch (err) {
+      setError("Error al crear el permiso.");
+    } finally {
+      console.log('finally');
+      setLoading(false);
+    }
   };
 
 
