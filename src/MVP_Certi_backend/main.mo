@@ -1,5 +1,6 @@
 import Text "mo:base/Text";
 import Trie "mo:base/Trie";
+import Debug "mo:base/Debug";
 import Types "types";
 
 actor class Product() {
@@ -16,6 +17,7 @@ actor class Product() {
   private stable var traceabilityDPP : Trie.Trie<Text, Types.traceability_consolidate> = Trie.empty();
 
   public func createUnitData(unit : Types.traceability_consolidate) : async Text {
+    Debug.print("Función saludar llamada con: " # unit.gtin_product);
     traceabilityDPP := Trie.replace(
       traceabilityDPP,
       key(unit.gtin_product),
@@ -25,8 +27,8 @@ actor class Product() {
     return  unit.gtin_product;
   };
 
-  public query func readModelById(gtinProduct : Text) : async ?Types.traceability_consolidate {
-    Trie.find(traceabilityDPP, key(gtinProduct), Text.equal)
+  public query func readModelById(gtin_product : Text) : async ?Types.traceability_consolidate {
+    Trie.find(traceabilityDPP, key(gtin_product), Text.equal)
   };
 
   // ---------- LOTES DPP ----------
