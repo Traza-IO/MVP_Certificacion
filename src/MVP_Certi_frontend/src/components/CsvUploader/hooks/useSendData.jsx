@@ -5,14 +5,15 @@ export const useSendData = () => {
   // const [permissions, setPermissions] = useState<AdmPermissions_Type[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  console.log(MVP_Certi_backend)
   const createUnitData = async (unitData) => {
     console.log('initializing createUnitData');
     setLoading(true);
     setError(null);
     try {
-      console.log('unitData trying to send');
-      await MVP_Certi_backend.createUnitData(unitData);
+     unitData.forEach( async (data) => {
+      await MVP_Certi_backend.createUnitData(data);
+      });
     } catch (err) {
       setError("Error al crear el permiso.");
     } finally {
