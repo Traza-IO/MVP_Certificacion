@@ -260,18 +260,18 @@ module {
       ]
     }];
     compliance_process:{
-      process: Text;
-      certifications:[{
-        name: Text;
-        organization: Text;
-        number: Text;
-        audit_date: Text;
-        effective_date: Text;
-        link: Text;
-        logo: Text;
-        }
-      ]
-    };
+        process: Text;
+        certifications:[{
+          name: Text;
+          organization: Text;
+          number: Text;
+          audit_date: Text;
+          effective_date: Text;
+          link: Text;
+          logo: Text;
+          }
+        ]
+      };
     traceability_blockchain_lot: {
       time_line:[{
         process: Text;

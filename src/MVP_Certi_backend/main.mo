@@ -27,7 +27,7 @@ actor class Product() {
     return  unit.gtin_product;
   };
 
-  public query func readModelById(gtin_product : Text) : async ?Types.traceability_consolidate {
+  public shared query func readModelById(gtin_product : Text) : async ?Types.traceability_consolidate {
     Trie.find(traceabilityDPP, key(gtin_product), Text.equal)
   };
 
