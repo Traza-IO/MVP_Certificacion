@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { MVP_Certi_backend } from 'declarations/MVP_Certi_backend';
-import { CsvUploader } from './components';
+import { CsvUploader,ImgUploader, GetImg} from './components';
 function App() {
 
   return (
@@ -10,6 +8,8 @@ function App() {
       <br />
       <h1>Prototipador</h1>
       <CsvUploader />
+      <ImgUploader />
+      <GetImg />
     </main>
   );
 }

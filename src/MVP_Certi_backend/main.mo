@@ -3,7 +3,7 @@ import Trie "mo:base/Trie";
 import Debug "mo:base/Debug";
 import Types "types";
 
-actor class Product() {
+persistent actor class Product() {
 
   // Alias interno para clave de texto
   type Key<K> = Trie.Key<K>;
@@ -22,16 +22,31 @@ actor class Product() {
       traceabilityDPP,
       key(unit.gtin_product),
       Text.equal,
-      ?unit
+      ?unit,
     ).0;
-    return  unit.gtin_product;
+    return unit.gtin_product;
   };
 
   public shared query func readModelById(gtin_product : Text) : async ?Types.traceability_consolidate {
-    Trie.find(traceabilityDPP, key(gtin_product), Text.equal)
+    Debug.print("getInfo Prototipador called with gtin_product: " # gtin_product);
+    Trie.find(traceabilityDPP, key(gtin_product), Text.equal);
+  };
+  stable var imagesDPP : Trie.Trie<Text, Blob> = Trie.empty();
+
+  public func uploadImage(name : Text, content : Blob) : async Text {
+    Debug.print("uploadImage Prototipador called with img name: " # name);
+    imagesDPP := Trie.replace(
+      imagesDPP,
+      key(name),
+      Text.equal,
+      ?content,
+    ).0;
+    return name;
   };
 
-  // ---------- LOTES DPP ----------
+  public query func getImage(name : Text) : async ?Blob {
+   Debug.print("uploadImage Prototipador called with img name: " # name);
+   return Trie.find(imagesDPP, key(name), Text.equal);
+  };
 
-  
 };
